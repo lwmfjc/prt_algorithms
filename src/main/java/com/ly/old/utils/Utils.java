@@ -1,4 +1,4 @@
-package com.ly.utils;
+package com.ly.old.utils;
 
 public class Utils {
     public static int gcd(int p,int q){
