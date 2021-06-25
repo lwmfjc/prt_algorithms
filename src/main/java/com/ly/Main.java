@@ -1,9 +1,5 @@
 package com.ly;
 
-import com.ly.utils.Utils;
-import edu.princeton.cs.algs4.Date;
-import edu.princeton.cs.algs4.StdDraw;
-
 public class Main {
     public static void main(String[] args) {
         //System.out.println("Hello ");

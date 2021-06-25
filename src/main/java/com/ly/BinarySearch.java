@@ -6,6 +6,9 @@ import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Arrays;
 
+/**
+ * 二分查找
+ */
 public class BinarySearch {
     public static int rank(int key,int[] a){
         int lo=0;
@@ -23,6 +26,11 @@ public class BinarySearch {
         return -1;
     }
     public static void main(String[] args) {
+        if(args.length<1){
+            System.out.println("no whitelist!");
+            return ;
+        }
+        System.out.println("waiting for enter");
         int[] whitelist= In.readInts(args[0]);
         Arrays.sort(whitelist);
 
