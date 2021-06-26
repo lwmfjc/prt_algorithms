@@ -6,7 +6,7 @@ import edu.princeton.cs.algs4.StdOut;
 import java.util.Iterator;
 
 public class FixedCapacityStackOfStrings<Item>
-implements Iterable<Item>{
+        implements Iterable<Item> {
     private Item[] a;
     private int N;
 
@@ -23,28 +23,31 @@ implements Iterable<Item>{
     }
 
     public void push(Item item) {
-        if(N==a.length){
+        if (N <= 0) {
+            resize(1);
+        }
+        if (N == a.length) {
             //元素已经满了
-            resize(2*a.length);
+            resize(2 * a.length);
         }
         a[N++] = item;
     }
 
     public Item pop() {
-        Item item=a[--N];
-        a[N]=null;
-        if(N>0&&N==a.length/4){
-            resize(a.length/2);
+        Item item = a[--N];
+        a[N] = null;
+        if (N > 0 && N == a.length / 4) {
+            resize(a.length / 2);
         }
         return item;
     }
 
-    private void resize(int max){
-        Item[] temp=(Item[])new Object[max];
-        for(int i=0;i<N;i++){
-            temp[i]=a[i];
+    private void resize(int max) {
+        Item[] temp = (Item[]) new Object[max];
+        for (int i = 0; i < N; i++) {
+            temp[i] = a[i];
         }
-        a=temp;
+        a = temp;
     }
 
     @Override
@@ -52,12 +55,13 @@ implements Iterable<Item>{
         return new ReverseArrayIterator();
     }
 
-    private class ReverseArrayIterator implements Iterator<Item>{
-        private int i=N;//当前下标
+    private class ReverseArrayIterator implements Iterator<Item> {
+        private int i = N;//当前下标
+
         @Override
         public boolean hasNext() {
-            System.out.println((i>0?"还有元素":"没元素了"));
-            return i>0;
+            System.out.println((i > 0 ? "还有元素" : "没元素了"));
+            return i > 0;
         }
 
         @Override
@@ -73,10 +77,10 @@ implements Iterable<Item>{
 
     public static void main(String[] args) {
         FixedCapacityStackOfStrings<String> s;
-        s = new FixedCapacityStackOfStrings(100);
+        s = new FixedCapacityStackOfStrings(0);
         while (!StdIn.isEmpty()) {
             String item = StdIn.readString();
-            if(item.equals("#")){
+            if (item.equals("#")) {
                 break;
             }
             if (!item.equals("-")) {
@@ -86,7 +90,7 @@ implements Iterable<Item>{
             }
         }
         StdOut.println("(" + s.size() + " left on stack)");
-        for (String s1:s){
+        for (String s1 : s) {
             StdOut.println(s1);
         }
     }
