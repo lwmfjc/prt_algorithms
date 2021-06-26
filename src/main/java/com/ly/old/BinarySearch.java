@@ -30,7 +30,6 @@ public class BinarySearch {
             System.out.println("no whitelist!");
             return ;
         }
-        System.out.println("waiting for enter");
         int[] whitelist= In.readInts(args[0]);
         Arrays.sort(whitelist);
 
