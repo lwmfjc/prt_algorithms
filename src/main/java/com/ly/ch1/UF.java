@@ -39,6 +39,9 @@ public class UF {
         }
         count--;
     }
+    public int[] getId(){
+        return id;
+    }
 
     public static void main(String[] args) {
         int N= StdIn.readInt();
@@ -51,6 +54,10 @@ public class UF {
             }
             uf.union(p,q);
             StdOut.println(p+" "+q);
+        }
+        int[] ids = uf.getId();
+        for(int n=0;n<ids.length;n++){
+            System.out.printf("%6d--%3d\n",n,ids[n]);
         }
         StdOut.println(uf.count()+"components");
     }
