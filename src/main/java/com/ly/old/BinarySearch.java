@@ -30,10 +30,13 @@ public class BinarySearch {
             System.out.println("no whitelist!");
             return ;
         }
+        //白名单N个数据数据
         int[] whitelist= In.readInts(args[0]);
         Arrays.sort(whitelist);
 
         while (!StdIn.isEmpty()){
+            //输入M个数
+            //输入<<<白名单数据
             int key=StdIn.readInt();
             if(rank(key,whitelist)==-1){
                 StdOut.println("Not get "+key);
