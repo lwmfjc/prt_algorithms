@@ -6,6 +6,9 @@ import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Arrays;
 
+/**
+ * 通过二分查找三个数相加和为零的整数对个数
+ */
 public class ThreeSumFast {
     public static int count(int[] a){
         Arrays.sort(a);

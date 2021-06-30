@@ -5,6 +5,9 @@ import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Stack;
 
+/**
+ * 使用Stack栈来处理简单的四则运算,+-/*和括号
+ */
 public class Evaluate {
     public static void main(String[] args) {
         Stack<String> ops=new Stack<String>();

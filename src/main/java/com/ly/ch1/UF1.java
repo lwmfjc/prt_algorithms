@@ -2,9 +2,10 @@ package com.ly.ch1;
 
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.Stopwatch;
 
 /**
- * union-find的实现
+ * quick-union的实现改进(用树的概念)
  */
 public class UF1 {
     private int[] id; //分量id(以触点作为索引)
@@ -44,6 +45,7 @@ public class UF1 {
     public static void main(String[] args) {
         int N= StdIn.readInt();
         UF1 uf=new UF1(N);
+        Stopwatch timer=new Stopwatch();
         while (!StdIn.isEmpty()){
             int p=StdIn.readInt();
             int q=StdIn.readInt();
@@ -53,10 +55,11 @@ public class UF1 {
             uf.union(p,q);
             StdOut.println(p+" "+q);
         }
-        int[] ids = uf.getId();
+       /* int[] ids = uf.getId();
         for(int n=0;n<ids.length;n++){
             System.out.printf("%6d--%3d\n",n,ids[n]);
-        }
+        }*/
         StdOut.println(uf.count()+"components");
+        StdOut.println(timer.elapsedTime()+" seconds");
     }
 }

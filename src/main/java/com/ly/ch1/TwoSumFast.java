@@ -6,6 +6,9 @@ import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Arrays;
 
+/**
+ * 通过二分查找 查找两个数和为0的整数对个数
+ */
 public class TwoSumFast {
     public static int count(int[] a){
         Arrays.sort(a);

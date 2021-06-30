@@ -4,7 +4,7 @@ import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
 /**
- * union-find的实现
+ * quick-find的实现
  */
 public class UF {
     private int[] id; //分量id(以触点作为索引)

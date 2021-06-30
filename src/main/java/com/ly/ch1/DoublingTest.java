@@ -4,6 +4,9 @@ import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.Stopwatch;
 
+/**
+ * 随机生成N个数,然后查找threeSum个数,并返回消耗时间
+ */
 public class DoublingTest {
     public static double timeTrial(int N) {
         int MAX = 1000000;

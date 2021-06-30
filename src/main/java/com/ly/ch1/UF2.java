@@ -2,18 +2,24 @@ package com.ly.ch1;
 
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.Stopwatch;
 
 /**
- * union-find的实现
+ * quick-union加权的实现(树基础上加权)
  */
-public class UF1 {
+public class UF2 {
     private int[] id; //分量id(以触点作为索引)
+    private int[] sz;//(由触点索引的)各个根节点所对应的分量的大小
     private int count;//分量数量
-    public UF1(int N){
+    public UF2(int N){
         count=N;
         id=new int[N];
         for(int i=0;i<N;i++){
             id[i]=i;
+        }
+        sz=new int[N];
+        for(int i=0;i<N;i++){
+            sz[i]=1;
         }
     }
     public int count(){
@@ -34,7 +40,15 @@ public class UF1 {
          if(pRoot==qRoot){
              return ;
          }
-         id[pRoot]=qRoot;
+         //将小树的根节点连接到大树的根节点
+        if(sz[pRoot]<sz[qRoot]){
+            id[pRoot]=qRoot;//p连向q
+            sz[qRoot]+=sz[pRoot];
+        }else {
+            id[qRoot]=pRoot; //q连向p
+            sz[pRoot]+=sz[qRoot];
+        }
+
          count--;
     }
     public int[] getId(){
@@ -43,7 +57,8 @@ public class UF1 {
 
     public static void main(String[] args) {
         int N= StdIn.readInt();
-        UF1 uf=new UF1(N);
+        UF2 uf=new UF2(N);
+        Stopwatch timer=new Stopwatch();
         while (!StdIn.isEmpty()){
             int p=StdIn.readInt();
             int q=StdIn.readInt();
@@ -53,10 +68,12 @@ public class UF1 {
             uf.union(p,q);
             StdOut.println(p+" "+q);
         }
-        int[] ids = uf.getId();
+        /*int[] ids = uf.getId();
         for(int n=0;n<ids.length;n++){
             System.out.printf("%6d--%3d\n",n,ids[n]);
-        }
+        }*/
         StdOut.println(uf.count()+"components");
+        StdOut.println(uf.count()+"components");
+        StdOut.println(timer.elapsedTime()+" seconds");
     }
 }

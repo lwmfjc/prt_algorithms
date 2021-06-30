@@ -5,6 +5,9 @@ import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.Stopwatch;
 
+/**
+ * 暴力查找存在三个相加和为零的整数对
+ */
 public class ThreeSum {
     public static int count(int[] a){
         int N=a.length;

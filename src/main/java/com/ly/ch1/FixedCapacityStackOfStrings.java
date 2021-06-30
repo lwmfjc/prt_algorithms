@@ -5,6 +5,10 @@ import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Iterator;
 
+/**
+ * 可拓展大小的栈结构,支持遍历. 减号-出栈,其他入栈
+ * @param <Item>
+ */
 public class FixedCapacityStackOfStrings<Item>
         implements Iterable<Item> {
     private Item[] a;

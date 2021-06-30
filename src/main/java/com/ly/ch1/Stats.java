@@ -3,6 +3,9 @@ package com.ly.ch1;
 import edu.princeton.cs.algs4.Bag;
 import edu.princeton.cs.algs4.StdIn;
 
+/**
+ * 使用第三方库中的Bag存储值,然后遍历计算平均值
+ */
 public class Stats {
     private static void bagsTest(){
         Bag<Double> numbers= new Bag<>();
