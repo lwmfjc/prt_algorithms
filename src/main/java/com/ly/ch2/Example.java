@@ -10,19 +10,7 @@ public class Example {
      * @param a
      */
     public static void sort(Comparable[] a) {
-        int N =a.length;
-        for(int i=0;i<N;i++){
-            int min=i;
-            for(int j=i+1;j<N;j++){
-                //如果后面的数比前面的小
-                //最小下标指向较小数的索引
-                if(less(a[j],a[min])){
-                    min=j;
-                }
-            }
-            //将两个数进行交换
-            exch(a,i,min);
-        }
+
     }
 
     /**
