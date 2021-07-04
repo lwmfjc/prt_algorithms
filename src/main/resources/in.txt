@@ -1,5 +1,1 @@
-to be or not to - be - - that - - - is
-# ( ( 1 + sqrt ( 4.0 ) ) / 2.0 )
-# ( ( 1 + sqrt ( 4.0 ) ) / 2.0 )
-# ( 1 + ( ( 2 + 3 ) * ( 4 * 5 ) ) )
-# 123123123
+a i b f d c e g h k
