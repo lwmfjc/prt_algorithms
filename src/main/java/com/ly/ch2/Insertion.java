@@ -13,7 +13,7 @@ public class Insertion extends BaseSort {
             int j=i;
             Comparable temp=a[j];
             //如果
-            while (j>0&&less(a[j],a[j-1])){
+            while (j>0&&less(temp,a[j-1])){
                 a[j]=a[j-1];
                 j--;
             }
@@ -59,7 +59,7 @@ public class Insertion extends BaseSort {
     }
     public static void main(String[] args) {
         String[] a= In.readStrings();
-        sort(a);
+        sort2(a);
         assert isSorted(a);
         show(a);
     }

@@ -10,10 +10,22 @@ public class InsertSort extends BaseSort {
             }
         }
     }
+    public static void sort1(Comparable[] a){
+        for(int i=1;i<a.length;i++){
+            int tempi=i;
+            Comparable temp=a[tempi];
+            //如果当前值应该在前一个值前面,那就把前一个值往后移
+            while (tempi>0&&isLess(temp,a[tempi-1])){
+                a[tempi]=a[tempi-1];
+                tempi--;
+            }
+            a[tempi]=temp;
+        }
+    }
 
     public static void main(String[] args) {
         String[] a = In.readStrings();
-        sort(a);
+        sort1(a);
         assert isSorted(a);
         show(a);
     }
