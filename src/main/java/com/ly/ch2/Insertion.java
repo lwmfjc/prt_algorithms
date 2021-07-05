@@ -7,7 +7,7 @@ public class Insertion extends BaseSort {
      * 这里进行了改进 exch方法非常消耗性能,改了之后快了200倍
      * @param a
      */
-    public static void sort(Comparable[] a){
+    public static void sort2(Comparable[] a){
         int N=a.length;
         for(int i=1;i<N;i++){
             int j=i;
@@ -20,7 +20,7 @@ public class Insertion extends BaseSort {
             a[j]=temp;
         }
     }
-    public static void sort2(Comparable[] a){
+    public static void sort (Comparable[] a){
         int N=a.length;
         for(int i=1;i<N;i++){
             //将a[i]插入到a[i-1],a[i-2],a[i-3]...之中
@@ -30,7 +30,7 @@ public class Insertion extends BaseSort {
             }
         }
     }
-    public static void sort1(Comparable[] a) {
+    public static void sort1 (Comparable[] a) {
         int n = a.length;
 
         // put smallest element in position to serve as sentinel

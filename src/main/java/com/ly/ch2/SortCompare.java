@@ -23,6 +23,7 @@ public class SortCompare {
             for (int i = 0; i < N; i++) {
                 a[i] = StdRandom.uniform();
             }
+            assert BaseSort.isSorted(a);
            // System.out.println("数据生成完毕-----");
             total += time(alg, a);
         }
