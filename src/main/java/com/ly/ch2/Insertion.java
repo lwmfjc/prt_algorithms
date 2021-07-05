@@ -3,7 +3,24 @@ package com.ly.ch2;
 import edu.princeton.cs.algs4.In;
 
 public class Insertion extends BaseSort {
+    /**
+     * 这里进行了改进 exch方法非常消耗性能,改了之后快了200倍
+     * @param a
+     */
     public static void sort(Comparable[] a){
+        int N=a.length;
+        for(int i=1;i<N;i++){
+            int j=i;
+            Comparable temp=a[j];
+            //如果
+            while (j>0&&less(a[j],a[j-1])){
+                a[j]=a[j-1];
+                j--;
+            }
+            a[j]=temp;
+        }
+    }
+    public static void sort2(Comparable[] a){
         int N=a.length;
         for(int i=1;i<N;i++){
             //将a[i]插入到a[i-1],a[i-2],a[i-3]...之中

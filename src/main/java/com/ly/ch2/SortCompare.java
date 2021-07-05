@@ -23,6 +23,7 @@ public class SortCompare {
             for (int i = 0; i < N; i++) {
                 a[i] = StdRandom.uniform();
             }
+           // System.out.println("数据生成完毕-----");
             total += time(alg, a);
         }
         return total;
@@ -35,11 +36,11 @@ public class SortCompare {
         int T = Integer.parseInt(args[3]);
         //算法1的总时间 插入排序
         double t1 = timeRandomInput(alg1, N, T);
+        StdOut.printf("%s[%f]\n",alg1,t1);
         //算法2的总时间 选择排序
         double t2 = timeRandomInput(alg2, N, T);
-        //算法1比算法2快多少
-        StdOut.printf("%s[%f],%s[%f]",alg1,t1,alg2,t2);
-        /*StdOut.printf("For %d random Doubles\n  %s is ", N, alg1);
-        StdOut.printf("%.1f times faster than %s\n",t2/t1,alg2);*/
+        StdOut.printf("%s[%f]\n",alg2,t2);
+         StdOut.printf("For %d random Doubles\n  %s is ", N, alg1);
+        StdOut.printf("%.1f times faster than %s\n",t2/t1,alg2);
     }
 }
