@@ -17,6 +17,9 @@ public class SortCompare {
             case "Shell":
                 ShellSort.sort(a);
                 break;
+            case "Merge":
+                Merge.sort(a);
+                break;
             default:
                 break;
         }
@@ -47,9 +50,11 @@ public class SortCompare {
         String alg1=args[2];//算法1
         String alg2=args[3];//算法2
         String alg3=args[4];//算法3
-        System.out.printf("%s---%f\n",alg1,timeRandomInput(alg1,N,T));
+        String alg4=args[5];//算法3
+        /*System.out.printf("%s---%f\n",alg1,timeRandomInput(alg1,N,T));
         System.out.printf("%s---%f\n",alg2,timeRandomInput(alg2,N,T));
-        System.out.printf("%s---%f\n",alg3,timeRandomInput(alg3,N,T));
+        System.out.printf("%s---%f\n",alg3,timeRandomInput(alg3,N,T));*/
+        System.out.printf("%s---%f\n",alg4,timeRandomInput(alg4,N,T));
 
     }
 }
