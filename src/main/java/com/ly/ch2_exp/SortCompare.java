@@ -12,10 +12,11 @@ public class SortCompare {
                 InsertSort.sort1 (a);
                 break;
             case "Selection":
-               // SelectionSort.sort(a);
+                SelectionSort.sort(a);
                 break;
             case "Shell":
                 ShellSort.sort(a);
+                break;
             default:
                 break;
         }
