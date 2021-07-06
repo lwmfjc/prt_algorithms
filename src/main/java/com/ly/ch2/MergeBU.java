@@ -48,6 +48,12 @@ public class MergeBU extends BaseSort {
         int N=a.length;
         aux=new Comparable[N];
         for(int sz=1;sz<N;sz=sz+sz){//sz=1,2,4,8,16...子数组大小
+            //这里要对每个子数组都进行排序
+            //对于lo<N-sz,比如有11个,那坐标为8才需要进循环体,
+            //扣去10和9,8进循环体之后,后面的就不能进了
+            //0,1||2,3||4,5||6,7||8,9||10
+
+            //lo+=(sz+sz) 相当于跳到下一组进行归并
             for(int lo=0;lo<N-sz;lo+=sz+sz){//lo 子数组索引
                 //这里使用min是因为最后一个数组长度不一定足够大小
                 merge(a,lo,lo+sz-1,Math.min(lo+sz+sz-1,N-1));
