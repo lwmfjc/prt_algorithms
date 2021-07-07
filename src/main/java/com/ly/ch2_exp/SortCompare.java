@@ -20,6 +20,9 @@ public class SortCompare {
             case "Merge":
                 Merge.sort(a);
                 break;
+            case "MergeBU":
+                MergeBU.sort(a);
+                break;
             default:
                 break;
         }
@@ -50,11 +53,13 @@ public class SortCompare {
         String alg1=args[2];//算法1
         String alg2=args[3];//算法2
         String alg3=args[4];//算法3
-        String alg4=args[5];//算法3
+        String alg4=args[5];//算法4
+        String alg5=args[6];//算法5
         /*System.out.printf("%s---%f\n",alg1,timeRandomInput(alg1,N,T));
         System.out.printf("%s---%f\n",alg2,timeRandomInput(alg2,N,T));
-        System.out.printf("%s---%f\n",alg3,timeRandomInput(alg3,N,T));*/
-        System.out.printf("%s---%f\n",alg4,timeRandomInput(alg4,N,T));
+        System.out.printf("%s---%f\n",alg3,timeRandomInput(alg3,N,T));
+        System.out.printf("%s---%f\n",alg4,timeRandomInput(alg4,N,T));*/
+        System.out.printf("%s---%f\n",alg5,timeRandomInput(alg5,N,T));
 
     }
 }
