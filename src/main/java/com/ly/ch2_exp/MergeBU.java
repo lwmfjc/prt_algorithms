@@ -15,6 +15,8 @@ public class MergeBU extends BaseSort {
      */
     public static void merge(Comparable[] a,
                              int lo, int mid, int high) {
+        //lo=0,mid=0,high=1
+        //i=0,mid=0,j=1
         if (aux != null) {
             int i = lo;
             int j = mid + 1;

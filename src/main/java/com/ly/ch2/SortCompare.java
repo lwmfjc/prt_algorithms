@@ -17,6 +17,8 @@ public class SortCompare {
             Merge.sort(a);
         }else if(alg.equals("MergeBU")){
             MergeBU.sort(a);
+        }else if(alg.equals("Quick")){
+            Quick.sort(a);
         }
         return timer.elapsedTime();
     }
@@ -42,6 +44,7 @@ public class SortCompare {
         String alg3 = args[4];
         String alg4 = args[5];
         String alg5 = args[6];
+        String alg6 = args[7];
         int N = Integer.parseInt(args[0]);
         int T = Integer.parseInt(args[1]);
         //算法1的总时间 插入排序
@@ -56,6 +59,8 @@ public class SortCompare {
         StdOut.printf("%s[%f]\n",alg4,t4);*/
         double t5 = timeRandomInput(alg5, N, T);
         StdOut.printf("%s[%f]\n",alg5,t5);
+        double t6 = timeRandomInput(alg6, N, T);
+        StdOut.printf("%s[%f]\n",alg6,t6);
          /*StdOut.printf("For %d random Doubles\n  %s is ", N, alg1);
         StdOut.printf("%.1f times faster than %s\n",t2/t1,alg2);*/
     }
