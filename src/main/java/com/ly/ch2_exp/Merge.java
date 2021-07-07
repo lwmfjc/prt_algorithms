@@ -49,9 +49,12 @@ public class Merge extends BaseSort {
             } else if (i > mid) {
                 a[k] = aux[j++];
             } else if (isLess(aux[i], aux[j])) {
+                //只有数组间的比较才计入比较次数
                 //将较小的值取出来放上去
                 a[k] = aux[i++];
             } else {
+                //只有数组间的比较才计入比较次数
+                //如果a[j]min>a[i]max,那么只需要一半的比较次数
                 a[k] = aux[j++];
             }
         }
