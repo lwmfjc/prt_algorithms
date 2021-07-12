@@ -2,7 +2,7 @@ package com.ly.ch2;
 
 /**
  * 支持插入元素/删除最大元素
- *
+ * 插入元素操作不出超过lgN+1次,删除最大元素不超过2lgN次
  * @param <Key>
  */
 public class MaxPQ<Key extends Comparable> {
