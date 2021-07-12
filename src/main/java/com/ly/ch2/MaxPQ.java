@@ -49,7 +49,7 @@ public class MaxPQ<Key extends Comparable> {
             if (j < N && less(j, j + 1)) {
                 j++;
             }
-            //如果k比子节点小,循环结束
+            //如果k没有比子节点小,循环结束
             //也不需要交换
             if (!less(k, j)) break;
             //将节点跟最大子节点交换
