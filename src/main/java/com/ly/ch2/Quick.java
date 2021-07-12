@@ -9,12 +9,18 @@ public class Quick extends BaseSort {
             return;
         }
         int j = partition(a, lo, hi); //将数组切分(请见"快速排序的切分")
+        //4,1,3,6,5,7 ,结束后j=2--- 3,1,4,6,5,7
+        //3,1,4,6,5,7 ,结束后j=1----[1,3],4,6,5,7
+        //此时j=1指向元素3
+
+        // 3 左边只有一个元素 sort(a,0,[0])
+        // 3 右边没有元素 sort(a,[2],1)
         sort(a, lo, j - 1);//将左半部分a[lo..j-1]排序
         sort(a, j + 1, hi);
     }
 
     public static void sort(Comparable[] a) {
-        StdRandom.shuffle(a);//打乱次序
+        //StdRandom.shuffle(a);//打乱次序
         sort(a, 0, a.length - 1);
     }
 
@@ -59,7 +65,8 @@ public class Quick extends BaseSort {
     }
 
     public static void main(String[] args) {
-        String[] a= In.readStrings();
+        //  String[] a= In.readStrings();
+        Integer[] a=new Integer[]{4,1,3,6,5,7};
         sort(a);
         assert isSorted(a);
         show(a);

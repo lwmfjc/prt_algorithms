@@ -1,3 +1,4 @@
 .idea/
 target/
 prt_algorithms.iml
+src/main/resources/algs4-data
