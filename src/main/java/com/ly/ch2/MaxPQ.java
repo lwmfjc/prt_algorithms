@@ -5,7 +5,7 @@ package com.ly.ch2;
  * 插入元素操作不出超过lgN+1次,删除最大元素不超过2lgN次
  * @param <Key>
  */
-public class MaxPQ<Key extends Comparable> {
+public class MaxPQ<Key extends Comparable<Key>> {
     private Key[] pq; //基于堆的完全二叉树
     private int N = 0;//存储于pq[1..N]中,pq[0]没有使用
 
