@@ -86,11 +86,14 @@ public class MaxPQSort<Key extends Comparable<Key>> {
         int N = a.length - 1;//N表示数组有效数据长度
 
         //注意这里的初始化,k表示最后一个元素的父节点
+        //进行堆有序处理
         for (int k = N / 2; k >= 1; k--) {
             sink(a, k, N);
         }
-
+        //N为1时就不再处理
         while (N > 1) {
+            //1 把最大元素放到最后面
+            //2 修复堆有序
             exch(a, 1, N--);
             sink(a, 1, N);
         }
