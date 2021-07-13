@@ -1,11 +1,11 @@
 package com.ly.ch2_exp;
 
 public class MaxPQ<Key extends Comparable<Key>> {
+    private int N;
     private Key[] pq;
-    private int N = 0;
 
-    public MaxPQ(int max) {
-        pq = (Key[]) new Comparable[max + 1];
+    public MaxPQ(int maxN) {
+        pq = (Key[]) new Comparable[maxN + 1];
     }
 
     public void insert(Key key) {
@@ -22,44 +22,46 @@ public class MaxPQ<Key extends Comparable<Key>> {
     }
 
     /**
-     * 上浮
+     * 元素上浮
+     *
+     * @param k
      */
-    private void swim(int k) {
-        while (k > 1 && less(k / 2, k)) {
-            exch(k / 2, k);
+    public void swim(int k) {
+        while (k > 1) {
+            if (less(k / 2, k)) {
+                exch(k / 2, k);
+            }
             k = k / 2;
         }
     }
 
     /**
-     * 下沉
+     * 元素下沉
      *
      * @param k
      */
-    private void sink(int k) {
+    public void sink(int k) {
         while (k * 2 <= N) {
             int j = k * 2;
-            //判断是否有右节点
-            //j代表左节点
+            //存在右节点
             if (j < N && less(j, j + 1)) {
                 j++;
             }
             if (!less(k, j)) {
                 break;
             }
-            exch(k, j);
+            exch(j, k);
             k = j;
         }
     }
 
-    public int size() {
-        return N;
-    }
-
-    public boolean isEmpty() {
-        return N == 0;
-    }
-
+    /**
+     * 元素i是否小于j
+     *
+     * @param i
+     * @param j
+     * @return
+     */
     private boolean less(int i, int j) {
         return pq[i].compareTo(pq[j]) < 0;
     }
