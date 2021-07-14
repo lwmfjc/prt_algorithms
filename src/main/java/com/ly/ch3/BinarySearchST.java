@@ -77,7 +77,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 
     public boolean contains(Key word) {
         int rank = rank(word);
-        return word == select(rank);
+        return rank < N && word.compareTo(select(rank)) == 0;
     }
 
     public Key min() {
@@ -104,10 +104,24 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
         return keys[i];
     }
 
+    /**
+     * 删除键为kye的值
+     * @param key
+     */
+    public void delete(Key key) {
+        int i = rank(key);
+        //找到后进行删除
+        if (select(i).compareTo(key) == 0) {
+            for (int k = i; i < N; i++) {
+                keys[k] = keys[k + 1];
+            }
+        }
+    }
+
     //小于等于key的最大值
     public Key floor(Key key) {
         int i = rank(key);
-        if (select(i) == key) {
+        if (select(i).compareTo(key) == 0) {
             return key;
         } else   {
             return select(i - 1);
@@ -143,7 +157,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     public static void main(String[] args)   {
         int minlen = Integer.parseInt(args[0]);//最小键长
         BinarySearchST<String, Integer> st =
-                new BinarySearchST<>(1610829);
+                new BinarySearchST<>(100);
         while (!StdIn.isEmpty()) {
             String word = StdIn.readString();
             //忽略较短的单词
