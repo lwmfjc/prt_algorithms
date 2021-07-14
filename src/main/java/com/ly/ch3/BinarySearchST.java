@@ -77,7 +77,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 
     public boolean contains(Key word) {
         int rank = rank(word);
-        return rank < N && word.compareTo(select(rank)) == 0;
+        return rank < N &&  keys[rank].compareTo(word) == 0;
     }
 
     public Key min() {
