@@ -37,7 +37,7 @@ public class Quick3Way extends BaseSort {
 
     public static void main(String[] args) {
 //  String[] a= In.readStrings();
-        Integer[] a=new Integer[]{5,2,3,5,33,44,33,44,44,44,3,33,1,4,5,5,6,5,7,9};
+        Integer[] a=new Integer[]{99, 1, 3, 1, 4, 5, 1, 2, 44, 2, 1, 1};
         sort(a);
         assert isSorted(a);
         show(a);
