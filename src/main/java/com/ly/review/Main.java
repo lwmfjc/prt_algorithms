@@ -1,4 +1,4 @@
-package com.ly.other;
+package com.ly.review;
 
 import com.ly.ch2.BaseSort;
 import edu.princeton.cs.algs4.In;
