@@ -5,6 +5,33 @@ import edu.princeton.cs.algs4.In;
 
 public class Main extends BaseSort {
 
+    //三向快速排序
+    public static void quick3Way(Comparable[] a, int lo, int hi) {
+        {
+            if (hi <= lo) {
+                return;
+            }
+            int lt = lo, i = lo + 1, gt = hi;
+            //a[lt..gt]之间放的是相等的元素
+            //换句话说,lt指向最边缘的 与v相等元素的下标 ,
+            Comparable v = a[lo];
+            while (i <= gt) {
+                int cmp = a[i].compareTo(v);
+                if (cmp < 0) {
+                    exch(a, i++, lt++);
+                } else if (cmp > 0) {
+                    exch(a, i, gt--);
+                } else {
+                    i++;
+                }
+            }
+            quick3Way(a, lo, lt - 1);
+            quickSort(a, gt + 1, hi);
+
+        }
+
+    }
+
     /**
      * 下沉
      *
@@ -46,7 +73,7 @@ public class Main extends BaseSort {
         }
 
         for (int k = 0; k < a.length; k++) {
-            a[k ] = aux[k+1];
+            a[k] = aux[k + 1];
         }
     }
 
@@ -281,7 +308,7 @@ public class Main extends BaseSort {
 
     public static void main(String[] args) {
         String[] strings = In.readStrings();
-        heapSort(strings);
+        quick3Way(strings,0,strings.length-1);
         assert isSorted(strings);
         show(strings);
     }
