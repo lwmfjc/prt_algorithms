@@ -34,8 +34,10 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
             int mid = lo + (hi - lo) / 2;
             int cmp = key.compareTo(keys[mid]);
             if (cmp < 0) {
+                //查询的值比mid小,那么hi就比mid小
                 hi = mid - 1;
             } else if (cmp > 0) {
+                //查询的值比mid大,那么lo就比mid大
                 lo = mid + 1;
             } else {
                 return mid;
