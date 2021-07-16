@@ -81,11 +81,6 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     }
 
 
-    public boolean contains(Key word) {
-        int rank = rank(word);
-        return rank < N &&  keys[rank].compareTo(word) == 0;
-    }
-
     public Key min() {
         return keys[0];
     }
@@ -111,34 +106,6 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * 删除键为kye的值
-     * @param key
-     */
-    public void delete(Key key) {
-        int i = rank(key);
-        //找到后进行删除
-        if (select(i).compareTo(key) == 0) {
-            for (int k = i; i < N; i++) {
-                keys[k] = keys[k + 1];
-            }
-        }
-    }
-
-    //小于等于key的最大值
-    public Key floor(Key key) {
-        int i = rank(key);
-        if (select(i).compareTo(key) == 0) {
-            return key;
-        } else   {
-            return select(i - 1);
-        }
-    }
-
-    public boolean isEmpty() {
-        return size() == 0;
-    }
-
-    /**
      * rank与celling一个意思,大于等于key的最小值
      *
      * @param lo
@@ -147,13 +114,52 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      */
     public Iterable<Key> keys(Key lo, Key hi) {
         Queue<Key> q = new Queue<Key>();
+        //把大于等于lo的都存进去
+        //把小于hi的都存进去
         for (int i = rank(lo); i < rank(hi); i++) {
             q.enqueue(keys[i]);
         }
+        //如果key=hi存在,把hi的key也存进去
         if (contains(hi)) {
             q.enqueue(keys[rank(hi)]);
         }
         return q;
+    }
+
+    //-------------------以下非书本内容----------------------
+
+    public boolean contains(Key word) {
+        int rank = rank(word);
+        return rank < N &&  keys[rank].compareTo(word) == 0;
+    }
+
+    /**
+     * 删除键为kye的值
+     * @param key
+     */
+    public void delete(Key key) {
+        int i = rank(key);
+        //找到后进行删除
+        if (i < N && keys[i].compareTo(key) == 0) {
+            //需要重新赋值的元素
+            for (int k = N-2; k >= i; i--) {
+                keys[k] = keys[k + 1];
+            }
+            N--;
+        }
+    }
+
+    //小于等于key的最大值
+    public Key floor(Key key) {
+        int i = rank(key);
+        if (i < N && keys[i].compareTo(key) == 0) {
+            return key;
+        } else {
+            return keys[i - 1];
+        }
+    }
+    public boolean isEmpty() {
+        return size() == 0;
     }
 
     public Iterable<Key> keys() {
