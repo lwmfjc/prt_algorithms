@@ -41,6 +41,10 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
                 return mid;
             }
         }
+        //比如[3,4] 如果查找3.5,返回lo=1,hi=0;查找5,返回lo=2,hi=1;查找2,lo=0,hi=-1;
+        //所以0<=lo<=length-1+1
+        //-1<=hi <=length-1 可见返回hi是没有意义的
+
         //此时lo>hi
         //如果没有找到,就返回大于Key的最小值
         return lo;
