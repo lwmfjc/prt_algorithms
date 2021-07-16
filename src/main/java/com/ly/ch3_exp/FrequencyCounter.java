@@ -3,6 +3,9 @@ package com.ly.ch3_exp;
 import edu.princeton.cs.algs4.ST;
 import edu.princeton.cs.algs4.StdIn;
 
+/**
+ * 符号表的用例
+ */
 public class FrequencyCounter {
     public static void main(String[] args) {
         int minlen = Integer.parseInt(args[0]);
