@@ -1,7 +1,5 @@
 package com.ly.leetcode;
 
-import org.w3c.dom.NodeList;
-
 public class MsSolution0205 {
 
     //-------------------正题解法-------------------
