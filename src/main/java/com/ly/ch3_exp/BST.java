@@ -104,6 +104,7 @@ public class BST<Key extends Comparable<Key>, Value> {
         return node;
        */
         if (x.left == null) return x;
+        //其实这里跟上面的代码是一样的,也只返回最后一次进递(归)返回的结果
         return min(x.left);
     }
 
