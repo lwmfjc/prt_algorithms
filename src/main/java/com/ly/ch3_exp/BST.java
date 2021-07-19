@@ -58,6 +58,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 
     //在节点x的子节点下适当位置更新结点(找到更新,没找到生成)
     //★用来更新搜索路径上的结点的值/的子节点
+    //★这个递归正常情况下传入x返回x,但是如果x为空,则返回新结点
     public Node put(Node x, Key key, Value val) {
         if (x == null) {
             return new Node(key, val, 1);
@@ -67,6 +68,7 @@ public class BST<Key extends Comparable<Key>, Value> {
             //★这里翻译一下就是对x.right进行判断,要么更新要么拿新结点填上
             //根据下一个递归函数,if x.right == null则返回新节点
             //if x.right.key == x.key 则停止递归
+            //★这里传入什么都返回什么,注意看下面return x;
             x.right = put(x.right, key, val);
         } else if (cmp < 0) {
             x.left = put(x.left, key, val);
@@ -87,6 +89,20 @@ public class BST<Key extends Comparable<Key>, Value> {
 
     //往左节点一直找,直到x.left==null,返回x
     private Node min(Node x) {
+        //这个条件就不是if x== null,原因是如果这样的话,
+        // 就没法返回上一个
+
+        /*
+        if (x == null) return null;
+        //★这里传入什么都返回结果[注意下面return node]
+        //★而且返回的是最后一次递(归)的结果
+        Node node = min(x.left);
+        if (node == null) {
+            return x;
+        }
+        //如果是这个写法,那么每一层(递)归都会返回倒数第二层的结果
+        return node;
+       */
         if (x.left == null) return x;
         return min(x.left);
     }
@@ -174,7 +190,16 @@ public class BST<Key extends Comparable<Key>, Value> {
 
 
     public static void main(String[] args) {
-
+        BST<Integer, String> bst = new BST<>();
+        bst.put(20, "a20");
+        bst.put(10, "a10");
+        bst.put(30, "a30");
+        bst.put(8, "a8");
+        bst.put(13, "a13");
+        bst.put(25, "a25");
+        bst.put(70, "a70");
+        bst.put(22, "a22");
+        System.out.println(bst.min());
     }
 
 }
