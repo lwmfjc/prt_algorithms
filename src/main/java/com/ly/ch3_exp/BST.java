@@ -1,6 +1,9 @@
 package com.ly.ch3_exp;
 
-public class BST<Key extends Comparable<Key>, Value> {
+import com.ly.ch3.ISearch;
+import edu.princeton.cs.algs4.StdOut;
+
+public class BST<Key extends Comparable<Key>, Value> implements ISearch<Key, Value> {
     private Node root;
 
     private class Node {
@@ -87,6 +90,18 @@ public class BST<Key extends Comparable<Key>, Value> {
         return min(root).key;
     }
 
+    @Override
+    public Key max() {
+        return max(root).key;
+    }
+
+    private Node max(Node x) {
+        if (x.right == null) {
+            return x;
+        }
+        return max(x.right);
+    }
+
     //往左节点一直找,直到x.left==null,返回x
     private Node min(Node x) {
         //这个条件就不是if x== null,原因是如果这样的话,
@@ -115,6 +130,37 @@ public class BST<Key extends Comparable<Key>, Value> {
         return x.key;
     }
 
+    @Override
+    public Key ceil(Key key) {
+        Node x = ceil(root, key);
+        if (x == null) return null;
+        return x.key;
+    }
+
+    //大于等于key的最小值
+    //即从x的右侧找
+    private Node ceil(Node x, Key key) {
+        if (x == null) {
+            return null;
+        }
+        int cmp = key.compareTo(x.key);
+        if (cmp == 0) {
+            return x;
+        } else if (cmp < 0) {
+            Node t = ceil(x.left, key);
+            if (t == null) {
+                return x;
+            } else {
+                return t;
+            }
+
+        } else {
+            return ceil(x.right, key);
+        }
+    }
+
+    //小于等于key的最大值
+    //即从x的左侧找
     private Node floor(Node x, Key key) {
         //往左找如果是空,那就是不存在
         if (x == null) {
@@ -176,6 +222,20 @@ public class BST<Key extends Comparable<Key>, Value> {
         root = deleteMin(root);
     }
 
+    @Override
+    public void deleteMax() {
+        root = deleteMax(root);
+    }
+
+    private Node deleteMax(Node x) {
+        if (x.right == null) {
+            return x.left;
+        }
+        x.right = deleteMax(x.right);
+        x.N = size(x.left) + size(x.right) + 1;
+        return x;
+    }
+
     //在某个结点下查找(没有左节点的结点),
     //如果没找到则返回原结点,找到则返回该结点的右节点
     private Node deleteMin(Node x) {
@@ -189,18 +249,72 @@ public class BST<Key extends Comparable<Key>, Value> {
         return x;
     }
 
+    public void delete(Key key) {
+        root = delete(root, key);
+    }
 
+    private Node delete(Node x, Key key) {
+        //除了x==null,其他情况都要返回自身
+        if (x == null) {
+            return null;
+        }
+        int cmp = key.compareTo(x.key);
+        if (cmp > 0) {
+            x.right = delete(x.right, key);
+        } else if (cmp < 0) {
+            x.left = delete(x.left, key);
+        } else {
+            if (x.left == null) {
+                return x.right;
+            }
+            if (x.right == null) {
+                return x.left;
+            }
+            //如果两个都不为空
+            //从右子树中找到最小的值充当根节点
+            Node t = x;
+            x = min(t.right);
+            x.right = deleteMin(t.right);
+            x.left = t.left;
+        }
+        x.N = size(x.left) + size(x.right) + 1;
+
+        return x;
+    }
+
+    public void printAll() {
+        print(root);
+    }
+    //print(node.left) 从当前结点一直往左找
+    //找到一个结点x,然后把当前节点的左半部分打印后再打右半部分
+    private void print( Node node) {
+        if (node == null) {
+            return;
+        }
+        print(node.left);
+        StdOut.printf("%6s", node.val);
+        print(node.right);
+    }
     public static void main(String[] args) {
         BST<Integer, String> bst = new BST<>();
-        bst.put(20, "a20");
-        bst.put(10, "a10");
-        bst.put(30, "a30");
-        bst.put(8, "a8");
-        bst.put(13, "a13");
-        bst.put(25, "a25");
-        bst.put(70, "a70");
-        bst.put(22, "a22");
-        System.out.println(bst.min());
+        bst.put(50, "A50");
+        bst.put(10, "A10");
+        bst.put(100, "A100");
+        bst.put(2, "A2");
+        bst.put(30, "A30");
+        bst.put(70, "A70");
+        bst.put(120, "A120");
+        bst.put(60, "A60");
+        bst.put(15, "A15");
+        bst.put(40, "A40");
+        bst.put(120, "A120");
+        bst.put(110, "A110");
+        bst.put(80, "A80");
+        bst.put(65, "A65");
+        bst.delete(140);
+        bst.printAll();
+        //StdOut.print(bst.ceil(88));
+        // System.out.println(bst.max());
     }
 
 }
