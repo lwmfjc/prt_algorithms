@@ -1,5 +1,6 @@
 package com.ly.ch3_exp;
 
+import com.ly.ch1.Queue;
 import com.ly.ch3.ISearch;
 import edu.princeton.cs.algs4.StdOut;
 
@@ -282,12 +283,41 @@ public class BST<Key extends Comparable<Key>, Value> implements ISearch<Key, Val
         return x;
     }
 
+
+    @Override
+    public Iterable<Key> keys() {
+        return keys(min(), max());
+    }
+
+    @Override
+    public Iterable<Key> keys(Key lo, Key hi) {
+        Queue<Key> queue = new Queue<>();
+        keys(root, queue, lo, hi);
+        return queue;
+    }
+
+    private void keys(Node x, Queue<Key> queue, Key lo, Key hi) {
+        if (x == null) return;
+        int cmplo = lo.compareTo(x.key);
+        int cmphi = hi.compareTo(x.key);
+        if (cmplo < 0) {
+            keys(x.left, queue, lo, hi);
+        }
+        if (cmplo <= 0 && cmphi >= 0) {
+            queue.enqueue(x.key);
+        }
+        if (cmphi > 0) {
+            keys(x.right, queue, lo, hi);
+        }
+    }
+
     public void printAll() {
         print(root);
     }
+
     //print(node.left) 从当前结点一直往左找
     //找到一个结点x,然后把当前节点的左半部分打印后再打右半部分
-    private void print( Node node) {
+    private void print(Node node) {
         if (node == null) {
             return;
         }
@@ -295,9 +325,10 @@ public class BST<Key extends Comparable<Key>, Value> implements ISearch<Key, Val
         StdOut.printf("%6s", node.val);
         print(node.right);
     }
+
     public static void main(String[] args) {
         BST<Integer, String> bst = new BST<>();
-        bst.put(50, "A50");
+        /*bst.put(50, "A50");
         bst.put(10, "A10");
         bst.put(100, "A100");
         bst.put(2, "A2");
@@ -310,9 +341,24 @@ public class BST<Key extends Comparable<Key>, Value> implements ISearch<Key, Val
         bst.put(120, "A120");
         bst.put(110, "A110");
         bst.put(80, "A80");
-        bst.put(65, "A65");
-        bst.delete(140);
-        bst.printAll();
+        bst.put(65, "A65");*/
+        //Iterable<Integer> keys = bst.keys(35,110);
+        bst.put(50, "A50");
+        bst.put(10, "A10");
+        bst.put(100, "A100");
+        bst.put(2, "A2");
+        bst.put(30, "A30");
+        bst.put(60, "A60");
+        bst.put(150, "A150");
+        bst.put(8, "A8");
+        bst.put(55, "A55");
+        bst.put(80, "A80");
+        Iterable<Integer> keys = bst.keys(8,70);
+        for(Integer key:keys){
+            System.out.printf("%6s",bst.get(key));
+        }
+        //bst.delete(140);
+        //bst.printAll();
         //StdOut.print(bst.ceil(88));
         // System.out.println(bst.max());
     }
