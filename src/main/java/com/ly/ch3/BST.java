@@ -1,6 +1,8 @@
 package com.ly.ch3;
 
-public class BST<Key extends Comparable<Key>, Value> {
+import edu.princeton.cs.algs4.StdOut;
+
+public class BST<Key extends Comparable<Key>, Value>  {
     private class Node {
         private Key key;
         private Value val;
@@ -11,6 +13,15 @@ public class BST<Key extends Comparable<Key>, Value> {
             this.key = key;
             this.val = val;
             N = n;
+        }
+
+        @Override
+        public String toString() {
+            return "Node{" +
+                    "key=" + key +
+                    ", val=" + val +
+                    ", N=" + N +
+                    '}';
         }
     }
 
@@ -81,6 +92,7 @@ public class BST<Key extends Comparable<Key>, Value> {
         }
         //结点放好了之后,更新它的父节点的N(总结点数)
         x.N = size(x.left) + size(x.right) + 1;
+        //这里表示层层递归返回的是本身
         return x;
     }
 
@@ -118,6 +130,7 @@ public class BST<Key extends Comparable<Key>, Value> {
         if (t != null) {
             return t;
         } else {
+            //如果在x的右侧没找到,则返回x本身
             return x;
         }
     }
@@ -126,6 +139,7 @@ public class BST<Key extends Comparable<Key>, Value> {
         return select(root, k).key;
     }
 
+    //找出一个结点X,该结点size(X.left)==k
     private Node select(Node x, int k) {
         if (x == null) {
             return null;
@@ -161,6 +175,8 @@ public class BST<Key extends Comparable<Key>, Value> {
         root = deleteMin(root);
     }
 
+    //在结点X下找一个左节点,该结点没有左节点,并更新X的N值
+    //如果遍历到最底端则不返回X本身,而是返回X.right
     private Node deleteMin(Node x) {
         if (x.left == null) {
             return x.right;
@@ -170,13 +186,35 @@ public class BST<Key extends Comparable<Key>, Value> {
         return x;
     }
 
+    public void printAll() {
+        print(root);
+    }
+
+    //print(node.left) 从当前结点一直往左找
+    //找到一个结点x,然后把当前节点的左半部分打印后再打右半部分
+    private void print(Node node) {
+        if (node == null) {
+            return;
+        }
+        print(node.left);
+        StdOut.printf("%6s", node.val);
+        print(node.right);
+    }
+
     public static void main(String[] args) {
-        BST<String, Integer> bst = new BST<>();
-        bst.put("9", 9);
-        bst.put("8", 8);
-        bst.put("10", 10);
-        bst.put("11", 11);
-        System.out.println(bst.size());
+        BST<Integer, String> bst = new BST<>();
+        bst.put(50, "A50");
+        bst.put(10, "A10");
+        bst.put(100, "A100");
+        bst.put(2, "A2");
+        bst.put(30, "A30");
+        bst.put(70, "A70");
+        bst.put(120, "A120");
+        bst.put(60, "A60");
+        bst.put(15, "A15");
+        bst.put(40, "A40");
+        System.out.println(bst.select(7));
+        //System.out.println(bst.size());
     }
 
 }
