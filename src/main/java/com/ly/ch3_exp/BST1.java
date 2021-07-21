@@ -129,7 +129,7 @@ public class BST1<Key extends Comparable<Key>, Value> implements ISearch<Key, Va
     }
 
     @Override
-    public Key ceil(Key key) {
+    public Key ceiling(Key key) {
         Node node = ceil(key, root);
         if (node == null) {
             return null;

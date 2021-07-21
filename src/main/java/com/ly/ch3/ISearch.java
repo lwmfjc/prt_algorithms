@@ -15,7 +15,7 @@ public interface ISearch<Key, Value> {
     Key floor(Key key);//大于等于key的最小值
 
     //ceil向大取整
-    Key ceil(Key key);//小于等于key的最大值
+    Key ceiling(Key key);//小于等于key的最大值
 
     Key select(int k);//选择排名为k的结点
 
