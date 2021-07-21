@@ -1,7 +1,5 @@
 package com.ly.ch3;
 
-import com.ly.ch1.Queue;
-
 public interface ISearch<Key, Value> {
     int size();//树的大小
 
@@ -13,8 +11,10 @@ public interface ISearch<Key, Value> {
 
     Key max();//找到最大的结点
 
+    //floor向小取整
     Key floor(Key key);//大于等于key的最小值
 
+    //ceil向大取整
     Key ceil(Key key);//小于等于key的最大值
 
     Key select(int k);//选择排名为k的结点
@@ -25,9 +25,11 @@ public interface ISearch<Key, Value> {
 
     void deleteMax();//删除最大的结点
 
+    void delete(Key key) ;
+
     Iterable<Key> keys();
 
-    Iterable<Key> keys(Key lo,Key hi);
+    Iterable<Key> keys(Key lo, Key hi);
 
 
 }
