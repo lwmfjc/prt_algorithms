@@ -7,13 +7,11 @@ public class Solution404 {
         if (root == null) {
             return 0;//空
         }
-        if (root.right == null && root.left == null) {
-            return 1;//是叶子
+        int sum=0;
+        if (root.left != null && root.left.left == null && root.left.right == null) {
+            sum+= root.left.val;
         }
-
-        return sumOfLeftLeaves(root.left) ;
-
-
+        return sum+sumOfLeftLeaves(root.left)+sumOfLeftLeaves(root.right);
     }
 
     public static void main(String[] args) {
