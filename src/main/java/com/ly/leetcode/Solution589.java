@@ -22,6 +22,12 @@ class Node {
 };
 
 public class Solution589 {
+    /**
+     * 函数作用:操作A:将当前节点添加进list,并遍历children中的结点进行操作A
+     * 当前结点为空/结点没有子节点时跳出递归
+     * @param list
+     * @param node
+     */
     public void preorder1(List<Integer> list, Node node) {
         if (node == null) {
             return;
@@ -54,6 +60,13 @@ public class Solution589 {
             Node cur = stack.peek();
             stack.pop();
             if (cur != null) {
+                //a:从栈中取出结点添加进list
+                //b:将子结点x,y,z放入栈中
+                //[c:先处理子结点x1,如果子结点没有子结点x1,继续处理子结点x2...直到所有子结点都处理完
+                // 该结点的子结点都处理完了,就处理子节点y
+                // ]
+
+                //继续上面的操作a:b 直到栈内无元素(和递归进行比较,就是直到没有(隐形栈)了)
                 list.add(cur.val);
                 if (cur.children != null) {
                     int n = cur.children.size();
