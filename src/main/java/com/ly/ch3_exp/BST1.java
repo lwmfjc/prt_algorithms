@@ -3,7 +3,9 @@ package com.ly.ch3_exp;
 import com.ly.ch3.ISearch;
 import edu.princeton.cs.algs4.StdOut;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class BST1<Key extends Comparable<Key>, Value> implements ISearch<Key, Value> {
@@ -244,7 +246,7 @@ public class BST1<Key extends Comparable<Key>, Value> implements ISearch<Key, Va
 
             因为指针传递的话,如果改变指针.left 能改变left,否则原先的root还是指向原先的位置,为值复制
          */
-        root= delete(key, root);
+        root = delete(key, root);
     }
 
     private Node delete(Key key, Node x) {
@@ -321,11 +323,40 @@ public class BST1<Key extends Comparable<Key>, Value> implements ISearch<Key, Va
             keys(x.left, queue, lo, hi);
         }
         // 如果这里不添加条件,会把经过的key都遍历进来
-        if(x.key.compareTo(lo)>=0&& x.key.compareTo(hi)<=0){
+        if (x.key.compareTo(lo) >= 0 && x.key.compareTo(hi) <= 0) {
             queue.offer(x.key);
         }
         if (cmphi > 0) {
             keys(x.right, queue, lo, hi);
+        }
+    }
+
+    //层序遍历
+    List<List<Value>> list = new ArrayList<>();
+
+    public List<List<Value>> levelOrder() {
+        ceng(root, 0);
+        for (int i = 0; i < list.size(); i++) {
+            List<Value> list2 = list.get(i);
+            for (int j = 0; j < list2.size(); j++) {
+                System.out.printf("%-5s", list2.get(j));
+            }
+            System.out.println();
+        }
+        return list;
+    }
+
+    //递归，给上一层返回什么？
+    public void ceng(Node node, int k) {
+        //终止条件是什么？
+        if (node != null) {
+            //如果k在size里能找到,就不需要添加了,k代表下标
+            if (k > list.size() - 1) {
+                list.add(new ArrayList<>());
+            }
+            list.get(k).add(node.val);
+            ceng(node.left, k + 1);
+            ceng(node.right, k + 1);
         }
     }
 
@@ -352,9 +383,9 @@ public class BST1<Key extends Comparable<Key>, Value> implements ISearch<Key, Va
         StdOut.println(bst1.min());
         StdOut.println(bst1.rank(55));
         StdOut.println("------------------");
-        Iterable<Integer> integers=bst1.keys(20,70);
-        for (Integer i :integers){
-            StdOut.printf("%6s",i);
+        Iterable<Integer> integers = bst1.keys(20, 70);
+        for (Integer i : integers) {
+            StdOut.printf("%6s", i);
         }
 
 
