@@ -34,14 +34,25 @@ public class Test implements Comparable<Test> {
         bst1.put(20, "L20");
         bst1.put(2, "L2");
         bst1.put(60, "L60");*/
-        bst1.put(1, "L1");
+        /*bst1.put(1, "L1");
         bst1.put(3, "L3");
         bst1.put(6, "L6");
         bst1.put(8, "L8");
         bst1.put(10, "L10");
         bst1.put(15, "L15");
         bst1.put(20, "L20");
-        bst1.put(25, "L25");
+        bst1.put(25, "L25");*/
+        bst1.put(50, "L50");
+        bst1.put(40, "L40");
+        bst1.put(60, "L60");
+        bst1.put(31, "L31");
+        bst1.put(45, "L45");
+        bst1.put(55, "L55");
+        bst1.put(80, "L80");
+        bst1.put(29, "L29");
+        bst1.put(35, "L35");
+        bst1.put(70, "L70");
+        bst1.put(28, "L28");
 
         bst1.levelOrder();
     }
