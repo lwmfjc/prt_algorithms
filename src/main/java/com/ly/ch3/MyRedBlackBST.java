@@ -695,14 +695,14 @@ public class MyRedBlackBST<Key extends Comparable<Key>, Value> {
 
 
     //层序遍历
-    List<List<Value>> list = new ArrayList<>();
+    List<List<Object>> list = new ArrayList<>();
 
-    public List<List<Value>> levelOrder() {
+    public List<List<Object>> levelOrder() {
         ceng(root, 0);
         for (int i = 0; i < list.size(); i++) {
-            List<Value> list2 = list.get(i);
+            List<Object> list2 = list.get(i);
             for (int j = 0; j < list2.size(); j++) {
-                System.out.printf("%-5s", list2.get(j));
+                System.out.printf("%-10s", list2.get(j));
             }
             System.out.println();
         }
@@ -717,7 +717,7 @@ public class MyRedBlackBST<Key extends Comparable<Key>, Value> {
             if (k > list.size() - 1) {
                 list.add(new ArrayList<>());
             }
-            list.get(k).add(node.val);
+            list.get(k).add(node.val+"--"+node.color);
             ceng(node.left, k + 1);
             ceng(node.right, k + 1);
         }

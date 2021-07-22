@@ -24,9 +24,9 @@ public class Test implements Comparable<Test> {
 
 
     public static void main(String[] args) {
-        BST1<Integer,String> bst=new BST1();
+        BST1<Integer, String> bst = new BST1();
 
-        MyRedBlackBST<Integer,String> bst1=new MyRedBlackBST();
+        MyRedBlackBST<Integer, String> bst1 = new MyRedBlackBST();
         /*bst1.put(50, "L50");
         bst1.put(10, "L10");
         bst1.put(80, "L80");
