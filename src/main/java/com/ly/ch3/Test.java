@@ -24,7 +24,7 @@ public class Test implements Comparable<Test> {
 
 
     public static void main(String[] args) {
-        BST1<Integer, String> bst = new BST1();
+        MyRedBlackBST<String, String> bst = new MyRedBlackBST();
 
         MyRedBlackBST<Integer, String> bst1 = new MyRedBlackBST();
         /*bst1.put(50, "L50");
@@ -53,17 +53,47 @@ public class Test implements Comparable<Test> {
         bst1.put(35, "L35");
         bst1.put(70, "L70");
         bst1.put(28, "L28");*/
-        bst1.put(1, "L1");
+        bst.put("A","0A");
+        bst.put("C","0C");
+        bst.put("E","0E");
+        bst.put("H","0H");
+        bst.put("J","0J");
+        bst.put("L","0L");
+        bst.put("M","0M");
+        bst.put("P","0P");
+        bst.put("R","0R");
+        bst.put("S","0S");
+        bst.put("Z","0Z");
+         /* bst.put("M", "0M");
+        bst.put("J", "0J");
+        bst.put("R", "0R");
+        bst.put("E", "0E");
+        bst.put("L", "0L");
+        bst.put("P", "0P");
+      bst.put("X", "0X");
+        bst.put("C", "0C");
+        bst.put("H", "0H");
+        bst.put("S", "0S");
+        bst.put("A", "0A");*/
+        // bst.put("Z","0Z");
+        bst.levelOrder();
+        int k = 1;
+        for (char i = 'a'; i <= 'z'; i++) {
+           // System.out.print(i);
+            //System.out.print("[" + k++ + "]--");
+        }
+
+        /*bst1.put(1, "L1");
         bst1.put(2, "L2");
         bst1.put(3, "L3");
         bst1.put(4, "L4");
         bst1.put(5, "L5");
-        bst1.put(6, "L6");
-        bst1.put(7, "L7");
-        bst1.put(8, "L8");
+      bst1.put(6, "L6");
+         bst1.put(7, "L7");
+         bst1.put(8, "L8");
         bst1.put(9, "L9");
         bst1.put(10, "L10");
-        bst1.put(11, "L11");
+        bst1.put(11, "L11");*/
 
         bst1.levelOrder();
     }
