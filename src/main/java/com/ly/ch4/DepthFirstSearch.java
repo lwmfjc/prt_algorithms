@@ -11,7 +11,7 @@ public class DepthFirstSearch {
 
     private void dfs(Graph G, int v) {
         marked[v] = true;//当前节点搜索过了
-        //System.out.printf("%3d", v);
+        System.out.printf("%3d", v);
         count++;
         for (int w : G.adj(v)) {
             //如果w没有搜索过,那就继续搜索
