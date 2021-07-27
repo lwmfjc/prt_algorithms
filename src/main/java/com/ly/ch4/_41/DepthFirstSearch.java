@@ -1,4 +1,4 @@
-package com.ly.ch4;
+package com.ly.ch4._41;
 //深度优先搜索
 public class DepthFirstSearch {
     private boolean[] marked;

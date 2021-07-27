@@ -1,10 +1,8 @@
-package com.ly.ch4;
+package com.ly.ch4._41;
 
 
 import edu.princeton.cs.algs4.Bag;
 import edu.princeton.cs.algs4.In;
-
-import java.util.ArrayList;
 
 public class Graph {
     private final int V;//顶点数目

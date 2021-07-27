@@ -1,4 +1,4 @@
-package com.ly.ch4;
+package com.ly.ch4._41;
 
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;

@@ -1,4 +1,4 @@
-package com.ly.ch4;
+package com.ly.ch4._41;
 
 public interface IGraph {
     int V();//顶点数
