@@ -4,9 +4,12 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdOut;
 
+/**
+ * 广度优先搜索路径
+ */
 public class DepthFirstPaths {
     private boolean[] marked;
-    private int count;
+    private int count;//路径上有多少个顶点
     private int[] edgeTo;//从起点到一个顶点的已知路径上的最后一个顶点
     private final int s;
 
@@ -18,6 +21,11 @@ public class DepthFirstPaths {
         System.out.println("\n-----------");
     }
 
+    /**
+     * 深度搜索
+     * @param G
+     * @param v
+     */
     private void dfs(Graph G, int v) {
         marked[v] = true;//当前节点搜索过了
         System.out.printf("%3d", v);
@@ -32,14 +40,28 @@ public class DepthFirstPaths {
         }
     }
 
+    /**
+     * 是否标记
+     * @param w
+     * @return
+     */
     public boolean marked(int w) {
         return marked[w];
     }
 
+    /**
+     * 路径上结点总数
+     * @return
+     */
     public int count() {
         return count;
     }
 
+    /**
+     * 是否有路径
+     * @param v
+     * @return
+     */
     public boolean hasPathTo(int v) {
         return marked[v];
     }
