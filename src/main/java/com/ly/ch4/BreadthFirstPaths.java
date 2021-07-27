@@ -1,8 +1,7 @@
 package com.ly.ch4;
 
 import edu.princeton.cs.algs4.Queue;
-
-import java.util.Stack;
+import edu.princeton.cs.algs4.Stack;
 
 /**
  * 广度优先搜索路径
@@ -30,9 +29,11 @@ public class BreadthFirstPaths {
         while (!queue.isEmpty()) {
             int v = queue.dequeue();
             for (int w : G.adj(v)) {
-                edgeTo[w] = v;//保存最短路径的最后一条边
-                marked[w] = true;//标记它,最短路径已知
-                queue.enqueue(w); //添加到队列中,等下用来查找接下来的路径
+                if (!marked[w]) {
+                    edgeTo[w] = v;//保存最短路径的最后一条边
+                    marked[w] = true;//标记它,最短路径已知
+                    queue.enqueue(w); //添加到队列中,等下用来查找接下来的路径
+                }
             }
         }
     }
@@ -43,6 +44,7 @@ public class BreadthFirstPaths {
 
     /**
      * s->v的路径
+     *
      * @param v
      * @return
      */
