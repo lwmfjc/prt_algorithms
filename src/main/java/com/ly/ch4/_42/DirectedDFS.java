@@ -7,6 +7,7 @@ import edu.princeton.cs.algs4.StdOut;
 
 /**
  * 有向图的可达性
+ * todo 先放着,不会做
  */
 public class DirectedDFS {
     private boolean[] marked;
