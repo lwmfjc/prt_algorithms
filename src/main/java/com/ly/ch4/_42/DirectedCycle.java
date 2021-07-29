@@ -1,7 +1,6 @@
 package com.ly.ch4._42;
 
 import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Stack;
 
@@ -28,14 +27,14 @@ public class DirectedCycle {
         marked[v] = true;
         //顶点v的邻接点w
         for (int w : G.adj(v)) {
-            //如果v只有一个相邻顶点,不会走return
+            //如果v有相邻顶点且所有相邻顶点都没遍历过,则onStack[v]为false
             if (this.hasCycle()) {
-                StdOut.println(w+"a");
+                //StdOut.println(w+"a");
                 return;
             } else if (!marked[w]) {//没有遍历过
                 edgeTo[w] = v;
                 dfs(G, w);
-                StdOut.println(w+"b");
+                //StdOut.println(w+"b");
                // System.out.println(++i);
             } else if (onStack[w]) {
                 //如果找到了闭环,就会导致所有的递归函数都直接return掉了
@@ -46,11 +45,10 @@ public class DirectedCycle {
                 }
                 cycle.push(w);
                 cycle.push(v);
-                StdOut.println(w+"c");
-
+               // StdOut.println(w+"c");
             }
         }
-        StdOut.println( v+"d");
+        //StdOut.println( v+"d");
         //System.out.println(++i);
         onStack[v] = false;
     }

@@ -9,7 +9,7 @@ public class Cycle {
 
     public Cycle(Graph G) {
         marked = new boolean[G.V()];
-        for (int s = 0; s <1/* G.V()*/; s++) {
+        for (int s = 0; s <  G.V() ; s++) {
             if (!marked[s]) {
                 dfs(G, s, s);
             }
