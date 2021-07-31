@@ -31,8 +31,11 @@ public class PrimMST {
     private void visit(EdgeWeightedGraph G, int v) {
         marked[v] = true;
         for (Edge e : G.adj(v)) {
-            int w = e.other(v);
+            int w = e.other(v);//非树顶点
             if (marked[w]) continue;
+            //如果非树顶点(w)到树顶点的距离,比原来的那条更小，就更新
+            //因为我的目的是找到一颗连通树,而每个顶点连到树的距离只会有一条
+            //所以distTo保留的是最小生成树的边
             if (e.weight() < distTo[w]) {
                 //连接w和树的最佳边Edge变为e
                 edgeTo[w] = e;
