@@ -32,10 +32,11 @@ public class Graph {
 
     }
 
-    public int E(){
+    public int E() {
         return E;
     }
-    public int V(){
+
+    public int V() {
         return V;
     }
 
@@ -60,6 +61,54 @@ public class Graph {
             s += "\n";
         }
         return s;
+    }
+
+    /**
+     * 图的某顶点的度数
+     *
+     * @param G
+     * @param v
+     * @return
+     */
+    public static int degree(Graph G, int v) {
+        int degree = 0;
+        for (int w : G.adj(v)) {
+            degree++;
+        }
+        return degree;
+    }
+
+    /**
+     * 最大度数
+     *
+     * @param G
+     * @return
+     */
+    public static int maxDegree(Graph G) {
+        int maxDegree = 0;
+        for (int v = 0; v < G.V(); v++) {
+            if (degree(G, v) > maxDegree) {
+                maxDegree = degree(G, v);
+            }
+        }
+        return maxDegree;
+    }
+
+    /**
+     * 自环的个数(无环图的自环)
+     * @param G
+     * @return
+     */
+    public static int numberOfSelfLoops(Graph G) {
+        int count = 0;
+        for (int v = 0; v < G.V(); v++) {
+            for (int w : G.adj(v)) {
+                if (v == w) {
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 
     public static void main(String[] args) {
