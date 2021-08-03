@@ -1,6 +1,7 @@
 package com.ly.ch4_exp2;
 
 import com.ly.ch1.Bag;
+import edu.princeton.cs.algs4.Graph;
 import edu.princeton.cs.algs4.In;
 
 public class Digraph {
@@ -59,8 +60,20 @@ public class Digraph {
         return s;
     }
 
+    public Digraph reverse() {
+        Digraph R = new Digraph(V);
+        for (int v = 0; v < V(); v++) {
+            for (int w : adj(v)) {
+                R.addEdge(w, v);
+            }
+        }
+        return R;
+    }
+
+
     public static void main(String[] args) {
-        Digraph G=new Digraph(new In(args[0]));
-        System.out.println(G);
+        Digraph G = new Digraph(new In(args[0]));
+        Digraph G1 = G.reverse();
+        System.out.println(G1);
     }
 }
