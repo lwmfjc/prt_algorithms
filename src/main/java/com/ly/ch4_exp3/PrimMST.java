@@ -11,9 +11,6 @@ import java.math.BigDecimal;
 
 //最小生成树的Prim算法的延迟实现
 
-/**
- * todo 有问题
- */
 public class PrimMST {
     private boolean[] marked;
     private double[] distTo;//最佳距离
@@ -40,6 +37,8 @@ public class PrimMST {
         for (Edge e : G.adj(v)) {
             int w = e.other(v);
             if (marked[w]) continue;
+            //加入的时候就判断顶点w到树的横切边(只
+            // 在pq存储w到最小生成树横切边最小的距离)
             if (e.weight() < distTo[w]) {
                 //点w到最小生成树的最短路径(暂时)为e
                 edgeTo[w] = e;
