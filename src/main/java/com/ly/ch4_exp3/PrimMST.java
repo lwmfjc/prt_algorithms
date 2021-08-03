@@ -1,21 +1,27 @@
 package com.ly.ch4_exp3;
 
 import com.ly.ch1.Queue;
+import com.ly.ch1.Stack;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.IndexMinPQ;
 import edu.princeton.cs.algs4.MinPQ;
 
 //最小生成树的Prim算法的延迟实现
+
+/**
+ * todo 有问题
+ */
 public class PrimMST {
     private boolean[] marked;
     private double[] distTo;
-    private Queue<Edge> mst;//最小生成树的边
+    private int[] edgeTo;
     private IndexMinPQ<Edge> pq;//横切边
 
     public PrimMST(EdgeWeightedGraph G) {
         marked = new boolean[G.V()];
         pq = new IndexMinPQ<>(G.V());
-        mst = new Queue<>();
+        edgeTo = new int[G.V()];
+        distTo=new double[G.V()];
         visit(G, 0);
         while (!pq.isEmpty()) {
             int w = pq.delMin();//顶点w
@@ -31,6 +37,7 @@ public class PrimMST {
             if (marked[w]) continue;
             //找到依附该点的边,这条边的另一个顶点不能是标记过的
             if (e.weight() < distTo[w]) {
+                edgeTo[w]=v;
                 distTo[w] = e.weight();
                 if (pq.contains(w)) {
                     pq.changeKey(w, e);
@@ -42,7 +49,9 @@ public class PrimMST {
     }
 
     public Iterable<Edge> edge() {
-        return mst;
+        Stack<Edge> edges=new Stack<>();
+        //return mst;
+        return null;
     }
 
     public double weight() {
