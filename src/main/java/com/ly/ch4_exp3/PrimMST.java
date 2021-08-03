@@ -10,7 +10,7 @@ import edu.princeton.cs.algs4.MinPQ;
 import java.math.BigDecimal;
 
 //最小生成树的Prim算法的延迟实现
-
+//核心：一个顶点到最小生成树的最短距离只会有一条
 public class PrimMST {
     private boolean[] marked;
     private double[] distTo;//最佳距离
