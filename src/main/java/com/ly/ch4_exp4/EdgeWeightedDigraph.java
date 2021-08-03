@@ -37,6 +37,13 @@ public class EdgeWeightedDigraph {
         E++;
     }
 
+    public int V(){
+        return V;
+    }
+    public int E(){
+        return E;
+    }
+
     public Iterable<DirectedEdge> adj(int v) {
         return adj[v];
     }

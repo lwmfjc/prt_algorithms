@@ -5,6 +5,8 @@ import edu.princeton.cs.algs4.Graph;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.MinPQ;
 
+import java.math.BigDecimal;
+
 //最小生成树的Prim算法的延迟实现
 public class LazyPrimMST {
     private boolean[] marked;
@@ -48,14 +50,16 @@ public class LazyPrimMST {
     }
 
     public double weight() {
-        double weightT = 0.00;
+        BigDecimal weightT = new BigDecimal(0.00);
         for (Edge e : mst) {
-            weightT += e.weight();
+            weightT=weightT.add(new BigDecimal(e.weight()));
         }
-        return weightT;
+        return weightT.doubleValue();
     }
 
     public static void main(String[] args) {
+        System.out.println(0.19+0.26+0.17+0.28+0.35+0.40+0.16);
+        System.out.println(0.16+0.19+0.26+0.17+0.28+0.35+0.40);
         EdgeWeightedGraph G = new EdgeWeightedGraph(
                 new In(args[0]));
         System.out.println("MST----------");

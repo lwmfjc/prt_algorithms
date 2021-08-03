@@ -2,9 +2,12 @@ package com.ly.ch4_exp3;
 
 import com.ly.ch1.Queue;
 import com.ly.ch1.Stack;
+import com.ly.ch4_exp4.EdgeWeightedDigraph;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.IndexMinPQ;
 import edu.princeton.cs.algs4.MinPQ;
+
+import java.math.BigDecimal;
 
 //最小生成树的Prim算法的延迟实现
 
@@ -13,56 +16,60 @@ import edu.princeton.cs.algs4.MinPQ;
  */
 public class PrimMST {
     private boolean[] marked;
-    private double[] distTo;
-    private int[] edgeTo;
-    private IndexMinPQ<Edge> pq;//横切边
+    private double[] distTo;//最佳距离
+    private Edge[] edgeTo;//最佳边
+    private IndexMinPQ<Double> pq;//有效的横切边(的长度)
 
     public PrimMST(EdgeWeightedGraph G) {
         marked = new boolean[G.V()];
+        distTo = new double[G.V()];//最小生成树的距离
+        edgeTo = new Edge[G.V()];//最小生成树的边
+        for (int v = 0; v < G.V(); v++) {
+            distTo[v] = Double.POSITIVE_INFINITY;//最大的double
+        }
         pq = new IndexMinPQ<>(G.V());
-        edgeTo = new int[G.V()];
-        distTo=new double[G.V()];
-        visit(G, 0);
+        pq.insert(0, 0.00);//有效边
         while (!pq.isEmpty()) {
-            int w = pq.delMin();//顶点w
-            visit(G, w);
+            int min = pq.delMin();
+            visit(G, min);
         }
     }
-
 
     private void visit(EdgeWeightedGraph G, int v) {
         marked[v] = true;
         for (Edge e : G.adj(v)) {
             int w = e.other(v);
             if (marked[w]) continue;
-            //找到依附该点的边,这条边的另一个顶点不能是标记过的
             if (e.weight() < distTo[w]) {
-                edgeTo[w]=v;
+                //点w到最小生成树的最短路径(暂时)为e
+                edgeTo[w] = e;
                 distTo[w] = e.weight();
                 if (pq.contains(w)) {
-                    pq.changeKey(w, e);
+                    pq.changeKey(w, e.weight());
                 } else {
-                    pq.insert(w, e);
+                    pq.insert(w, e.weight());
                 }
             }
+
         }
+
     }
 
-    public Iterable<Edge> edge() {
-        Stack<Edge> edges=new Stack<>();
-        //return mst;
-        return null;
+    private Iterable<Edge> edge() {
+        Queue<Edge> queue = new Queue<>();
+        for (int i = 1; i < edgeTo.length; i++) {
+            queue.enqueue(edgeTo[i]);
+        }
+        return queue;
     }
 
     public double weight() {
-        double weightT = 0.00;
-        /*for (Edge e : mst) {
-            weightT += e.weight();
-        }*/
-        for(double weight:distTo){
-            weightT+=weight;
+        //用double会导致精度问题
+        BigDecimal weightT = new BigDecimal(0.00);
+        for (Edge e : edge()) {
+            weightT = weightT.add(new BigDecimal(e.weight()));
         }
-        return weightT;
+        return weightT.doubleValue();
     }
 
     public static void main(String[] args) {
