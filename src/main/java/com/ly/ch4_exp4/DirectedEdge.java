@@ -1,22 +1,26 @@
 package com.ly.ch4_exp4;
 
-public class DirectedEdge {
-    private final int from;
-    private final int to;
-    private final double weight;
+import com.ly.ch1.Bag;
+import com.ly.ch4_exp3.Edge;
 
-    public DirectedEdge(int from, int to, double weight) {
-        this.from = from;
-        this.to = to;
+//有向边
+public class DirectedEdge {
+    private final int v;
+    private final int w;
+    private double weight;
+
+    public DirectedEdge(int v, int w, double weight) {
+        this.v = v;
+        this.w = w;
         this.weight = weight;
     }
 
     public int from() {
-        return from;
+        return v;
     }
 
     public int to() {
-        return to;
+        return w;
     }
 
     public double weight(){
@@ -25,10 +29,10 @@ public class DirectedEdge {
 
     @Override
     public String toString() {
-        return "DirectedEdge{" +
-                "from=" + from +
-                ", to=" + to +
-                ", weight=" + weight +
-                '}';
+        return String.format("Edge{" +
+                "v=" + v +
+                ", w=" + w +
+                ", weight=%.2f }", weight);
     }
+
 }

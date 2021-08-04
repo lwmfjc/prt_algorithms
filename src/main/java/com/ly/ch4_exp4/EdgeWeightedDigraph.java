@@ -1,12 +1,12 @@
 package com.ly.ch4_exp4;
 
-
 import com.ly.ch1.Bag;
-import edu.princeton.cs.algs4.Edge;
+import com.ly.ch4_exp3.Edge;
 import edu.princeton.cs.algs4.In;
 
 import java.util.Arrays;
 
+//有权方向图
 public class EdgeWeightedDigraph {
     private final int V;
     private int E;
@@ -23,8 +23,8 @@ public class EdgeWeightedDigraph {
 
     public EdgeWeightedDigraph(In in) {
         this(in.readInt());
-        int e = in.readInt();
-        for (int n = 0; n < e; n++) {
+        int E = in.readInt();
+        for (int e = 0; e < E; e++) {
             int from = in.readInt();
             int to = in.readInt();
             double weight = in.readDouble();
@@ -32,16 +32,17 @@ public class EdgeWeightedDigraph {
         }
     }
 
-    private void addEdge(DirectedEdge e) {
-        adj[e.from()].add(e);
-        E++;
-    }
-
-    public int V(){
+    public int V() {
         return V;
     }
-    public int E(){
+
+    public int E() {
         return E;
+    }
+
+    private void addEdge(DirectedEdge edge) {
+        adj[edge.from()].add(edge);
+        this.E++;
     }
 
     public Iterable<DirectedEdge> adj(int v) {
@@ -53,13 +54,10 @@ public class EdgeWeightedDigraph {
         String s = "EdgeWeightedDigraph{" +
                 "V=" + V +
                 ", E=" + E + "}\n";
-        for (int v = 0; v < V; v++) {
+        for (int v = 0; v < V(); v++) {
             s += v + ":";
-            for (DirectedEdge e : adj(v)) {
-                int from = e.from();
-                int to = e.to();
-                double weight = e.weight();
-                s += " [" + from + "->" + to +"("+weight+ ")] ";
+            for (DirectedEdge edge : adj(v)) {
+                s += edge.from() + "->" + edge.to() + "[" + String.format("%.2f", edge.weight()) + "]  ";
             }
             s += "\n";
         }
@@ -67,8 +65,7 @@ public class EdgeWeightedDigraph {
     }
 
     public static void main(String[] args) {
-        EdgeWeightedDigraph G =
-                new EdgeWeightedDigraph(new In(args[0]));
+        EdgeWeightedDigraph G = new EdgeWeightedDigraph(new In("din.txt"));
         System.out.println(G);
     }
 }

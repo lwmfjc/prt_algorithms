@@ -1,11 +1,8 @@
 package com.ly.ch4_exp3;
 
 import com.ly.ch1.Queue;
-import com.ly.ch1.Stack;
-import com.ly.ch4_exp4.EdgeWeightedDigraph;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.IndexMinPQ;
-import edu.princeton.cs.algs4.MinPQ;
 
 import java.math.BigDecimal;
 
