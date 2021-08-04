@@ -58,8 +58,8 @@ public class LazyPrimMST {
     }
 
     public static void main(String[] args) {
-        System.out.println(0.19+0.26+0.17+0.28+0.35+0.40+0.16);
-        System.out.println(0.16+0.19+0.26+0.17+0.28+0.35+0.40);
+        /*System.out.println(0.19+0.26+0.17+0.28+0.35+0.40+0.16);
+        System.out.println(0.16+0.19+0.26+0.17+0.28+0.35+0.40);*/
         EdgeWeightedGraph G = new EdgeWeightedGraph(
                 new In(args[0]));
         System.out.println("MST----------");
