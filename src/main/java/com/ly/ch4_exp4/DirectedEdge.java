@@ -4,7 +4,7 @@ import com.ly.ch1.Bag;
 import com.ly.ch4_exp3.Edge;
 
 //有向边
-public class DirectedEdge {
+public class DirectedEdge implements Comparable<DirectedEdge> {
     private final int v;
     private final int w;
     private double weight;
@@ -23,7 +23,7 @@ public class DirectedEdge {
         return w;
     }
 
-    public double weight(){
+    public double weight() {
         return weight;
     }
 
@@ -35,4 +35,14 @@ public class DirectedEdge {
                 ", weight=%.2f }", weight);
     }
 
+    @Override
+    public int compareTo(DirectedEdge o) {
+        if (this.weight() < o.weight()) {
+            return -1;
+        } else if (this.weight() > o.weight()) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }
