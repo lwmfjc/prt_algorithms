@@ -5,7 +5,6 @@ import edu.princeton.cs.algs4.StdOut;
 
 public abstract class BaseSort {
 
-    protected static void sort(Comparable[] a){}
     protected static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
     }
@@ -29,13 +28,5 @@ public abstract class BaseSort {
             if (less(a[i], a[i - 1])) return false;
         }
         return true;
-    }
-
-
-    protected static void MainTest(String[] args) {
-        String[] a = In.readStrings();
-        sort(a);
-        assert isSorted(a):"未进行排序";
-        show(a);
     }
 }
