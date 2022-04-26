@@ -10,7 +10,8 @@ public class Insertion extends BaseSort {
         //所以第二层for只走到1，因为0前面没有值
         //如果比前面的值小，就进行交换
         for (int i = 1; i < N; i++) {
-            for (int j = i; j > 0 && less(a[j], a[j - 1]); j--) {
+            /*for (int j = i; j > 0 && less(a[j], a[j - 1]); j--)*/
+            for (int j = i; j >=1 && less(a[j], a[j - 1]); j--){
                 exch(a, j, j - 1);
             }
         }
