@@ -11,7 +11,6 @@ public class MergeBU extends BaseSort {
         //每次合并的子数组长度翻倍
         for (int sz = 1; sz < N; sz = sz + sz) {
             //lo:子数组索引
-            //下面改写了一下，比较好理解
             //边界问题，这里要保证最后一组子数组的前一个元素下标，能再放一组sz长度的子数组，即小数组的下标刚好等于(N-1)-sz
             for (int lo = 0; lo < N - sz; lo += sz + sz) {
                 //循环合并一个个的小数组
