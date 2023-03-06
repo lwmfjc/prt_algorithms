@@ -1,5 +1,8 @@
 package com.ly.ch2_exp;
 
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.IndexMinPQ;
+
 public class MaxPQIndex {
 
     private int N;
