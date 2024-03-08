@@ -1,11 +1,8 @@
 package com.ly.leetcode;
 
-import javafx.scene.shape.Line;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Stack;
 
 public class LySolution2 {
     int indexTotal = 0;
