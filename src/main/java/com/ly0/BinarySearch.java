@@ -25,7 +25,9 @@ public class BinarySearch {
         while(!StdIn.isEmpty()){
             int key=StdIn.readInt();
             if(rank(key,whitelist) == -1)
-                StdOut.println();
+                StdOut.println("不在名单中!");
+            else
+                StdOut.println("存在~");
         }
     }
 }
