@@ -1,0 +1,3 @@
+javac -encoding utf-8 test_ly/BinarySearch.java
+
+java test_ly.BinarySearch /d/Users/ly/Documents/git/prt_algorithms/src/main/resources/ly-white.txt < /d/Users/ly/Documents/git/prt_algorithms/src/main/resources/ly-all.txt
