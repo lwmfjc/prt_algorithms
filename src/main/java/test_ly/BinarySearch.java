@@ -1,6 +1,7 @@
 package test_ly;
 
 import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
@@ -32,5 +33,13 @@ public class BinarySearch {
                 StdOut.println(key);
             }
         }
+        
+        //=====绘图相关=====
+        //绘图初始化
+//        StdDraw.setXscale(0, 20);
+//        StdDraw.setYscale(0, 20);
+//        StdDraw.setPenRadius(.01);
+//        //绘图
+//        StdDraw.line(2,2,10,10); 
     }
 }
